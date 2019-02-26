@@ -38,4 +38,7 @@ export default {
   'menu.account.settings': '个人设置',
   'menu.account.trigger': '触发报错',
   'menu.account.logout': '退出登录',
+  'menu.overview': '数据概览',
+  'menu.block': '程序卡顿',
+  'menu.leak': '内存泄漏',
 };

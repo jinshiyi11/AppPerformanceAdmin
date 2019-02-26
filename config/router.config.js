@@ -21,7 +21,26 @@ export default [
     Routes: ['src/pages/Authorized'],
     authority: ['admin', 'user'],
     routes: [
-      // dashboard
+      // 数据概览
+      {
+        path: '/dashboard',
+        name: 'overview',
+        icon: 'dashboard',
+        component: './Dashboard/Monitor',
+      },
+      //
+      {
+        path: '/block/blockInfoList',
+        name: 'block',
+        icon: 'dashboard',
+        component: './Block/BlockInfoList',
+      },
+      {
+        path: '/dashboard',
+        name: 'leak',
+        icon: 'dashboard',
+        component: './Dashboard/Monitor',
+      },
       { path: '/', redirect: '/dashboard/analysis' },
       {
         path: '/dashboard',
