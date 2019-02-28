@@ -23,7 +23,7 @@ export default [
     routes: [
       // 数据概览
       {
-        path: '/dashboard',
+        path: '/dashboard1',
         name: 'overview',
         icon: 'dashboard',
         component: './Dashboard/Monitor',
@@ -34,14 +34,22 @@ export default [
         name: 'block',
         icon: 'dashboard',
         component: './Block/BlockInfoList',
+        hideChildrenInMenu: true,
       },
       {
-        path: '/dashboard',
+        path: '/block/blockDetailList',
+        name: 'blockDetailList',
+        hideInMenu: true,
+        component: './Block/BlockDetailList'
+      },
+      {
+        path: '/leak/leakInfoList',
         name: 'leak',
         icon: 'dashboard',
         component: './Dashboard/Monitor',
       },
-      { path: '/', redirect: '/dashboard/analysis' },
+      { path: '/', redirect: '/block/blockInfoList' },
+      /*
       {
         path: '/dashboard',
         name: 'dashboard',
@@ -287,6 +295,6 @@ export default [
       {
         component: '404',
       },
-    ],
+    */],
   },
 ];

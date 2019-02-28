@@ -3,7 +3,7 @@ import { Table } from 'antd';
 import reqwest from 'reqwest';
 
 const PAGE_COUNT = 10;
-class BlockInfoList extends PureComponent {
+class BlockDetailList extends PureComponent {
   state = {
     data: [],
     pagination: {defaultPageSize: PAGE_COUNT},
@@ -11,57 +11,34 @@ class BlockInfoList extends PureComponent {
   };
 
   columns = [{
-    title: 'id',
-    dataIndex: 'id',
-    key: 'id',
-    width: 100,
-    render: text => <a href="javascript:;">{text}</a>,
-  }, {
     title: '卡顿时长(ms)',
     dataIndex: 'blockTime',
     key: 'blockTime',
     width: 120,
   }, {
-    title: '最近上报',
+    title: '版本',
+    dataIndex: 'versionCode',
+    key: 'versionCode',
+    width: 120,
+  }, {
+    title: '上报时间',
     dataIndex: 'insertTime',
     key: 'insertTime',
     width: 200,
   }, {
-    title: '发生次数',
-    dataIndex: 'occurCount',
-    key: 'occurCount',
+    title: '设备',
+    dataIndex: 'device',
+    key: 'device',
     width: 100,
   }, {
-    title: '堆栈',
-    dataIndex: 'stackTrace',
-    key: 'stackTrace',
-    render: (text, record) => {
-      return (
-      <a href={`/block/blockDetailList?id=${record.id}`}>{this.trimStackTrace(text)}</a>
-    )
-    },
+    title: '系统版本',
+    dataIndex: 'os',
+    key: 'os',
+    width: 100,
   }];
 
   componentDidMount() {
     this.fetch();
-  }
-
-  trimStackTrace(stack) {
-    let stacks = stack.trim().split("\r\n");
-    const len = stacks.length
-    if(len > 5){
-      stacks = stacks.slice(0,5)
-    }
-
-    let result = stacks.join("\r\n")
-    if(len>5){
-      result = `${result}\r\n...`
-    }
-
-    result = result.split("\r\n").map((item, i) => {
-      return <span style={{display: 'block'}} key={i}>{item}</span>;
-    });
-    return result
   }
 
   handleTableChange = (pagination, filters, sorter) => {
@@ -79,11 +56,11 @@ class BlockInfoList extends PureComponent {
     });
   };
 
-  fetch = (params = {}) => {
+  fetch = (params = {id:104}) => {
     console.log('params:', params);
     this.setState({ loading: true });
     reqwest({
-      url: 'http://10.113.21.55/api/getBlockInfoList',
+      url: 'http://10.113.21.55/api/getBlockDetailList',
       method: 'get',
       data: {
         results: 10,
@@ -101,6 +78,13 @@ class BlockInfoList extends PureComponent {
     });
   };
 
+  renderStackTrace = (record) => {
+    const stack = record.stackTrace
+    return stack.trim().split("\r\n").map((item, i) => {
+      return <span style={{display: 'block'}} key={i}>{item}</span>;
+    });
+  }
+
   render() {
     return (
       <Table
@@ -109,10 +93,11 @@ class BlockInfoList extends PureComponent {
         pagination={this.state.pagination}
         loading={this.state.loading}
         onChange={this.handleTableChange}
+        expandedRowRender={record => this.renderStackTrace(record)}
       />
     );
   }
 
 }
 
-export default BlockInfoList;
+export default BlockDetailList;
