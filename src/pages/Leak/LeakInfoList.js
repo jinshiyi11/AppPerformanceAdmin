@@ -3,7 +3,7 @@ import { Table } from 'antd';
 import reqwest from 'reqwest';
 
 const PAGE_COUNT = 10;
-class BlockInfoList extends PureComponent {
+class LeakInfoList extends PureComponent {
   state = {
     data: [],
     pagination: {defaultPageSize: PAGE_COUNT},
@@ -15,6 +15,7 @@ class BlockInfoList extends PureComponent {
     dataIndex: 'id',
     key: 'id',
     width: 100,
+    render: text => <a href="javascript:;">{text}</a>,
   }, {
     title: '卡顿时长(ms)',
     dataIndex: 'blockTime',
@@ -114,4 +115,4 @@ class BlockInfoList extends PureComponent {
 
 }
 
-export default BlockInfoList;
+export default LeakInfoList;

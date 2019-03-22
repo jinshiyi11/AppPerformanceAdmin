@@ -27,8 +27,8 @@ class BlockDetailList extends PureComponent {
     width: 200,
   }, {
     title: '设备',
-    dataIndex: 'device',
-    key: 'device',
+    dataIndex: 'model',
+    key: 'model',
     width: 100,
   }, {
     title: '系统版本',
@@ -56,11 +56,11 @@ class BlockDetailList extends PureComponent {
     });
   };
 
-  fetch = (params = {id:104}) => {
+  fetch = (params = {id: this.props.location.query.id}) => {
     console.log('params:', params);
     this.setState({ loading: true });
     reqwest({
-      url: 'http://10.113.21.55/api/getBlockDetailList',
+      url: 'http://10.113.21.105/api/getBlockDetailList',
       method: 'get',
       data: {
         results: 10,

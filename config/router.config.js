@@ -46,7 +46,7 @@ export default [
         path: '/leak/leakInfoList',
         name: 'leak',
         icon: 'dashboard',
-        component: './Dashboard/Monitor',
+        component: './Leak/LeakInfoList',
       },
       { path: '/', redirect: '/block/blockInfoList' },
       /*
