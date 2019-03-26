@@ -40,5 +40,6 @@ export default {
   'menu.account.logout': '退出登录',
   'menu.overview': '数据概览',
   'menu.block': '程序卡顿',
-  'menu.leak': '内存泄漏',
+  'menu.matrixLeak': 'matrix内存泄漏',
+  'menu.leakCanary': 'leakCanary内存泄漏',
 };

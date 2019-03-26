@@ -3,7 +3,7 @@ import { Table } from 'antd';
 import reqwest from 'reqwest';
 
 const PAGE_COUNT = 10;
-class LeakInfoList extends PureComponent {
+class MatrixLeakInfoList extends PureComponent {
   state = {
     data: [],
     pagination: {defaultPageSize: PAGE_COUNT},
@@ -17,28 +17,28 @@ class LeakInfoList extends PureComponent {
     width: 100,
     render: text => <a href="javascript:;">{text}</a>,
   }, {
-    title: '卡顿时长(ms)',
-    dataIndex: 'blockTime',
-    key: 'blockTime',
-    width: 120,
+    title: '泄漏的Activity',
+    dataIndex: 'activity',
+    key: 'activity',
+    width: 220,
   }, {
-    title: '最近上报',
-    dataIndex: 'insertTime',
-    key: 'insertTime',
+    title: 'tag',
+    dataIndex: 'tag',
+    key: 'tag',
     width: 200,
   }, {
-    title: '发生次数',
-    dataIndex: 'occurCount',
-    key: 'occurCount',
+    title: 'process',
+    dataIndex: 'process',
+    key: 'process',
     width: 100,
   }, {
-    title: '堆栈',
-    dataIndex: 'stackTrace',
-    key: 'stackTrace',
+    title: '发生时间',
+    dataIndex: 'time',
+    key: 'time',
     render: (text, record) => {
       return (
-      <a href={`/block/blockDetailList?id=${record.id}`}>{this.trimStackTrace(text)}</a>
-    )
+        <div>{new Date(text * 1).toLocaleString()}</div>
+      )
     },
   }];
 
@@ -46,23 +46,6 @@ class LeakInfoList extends PureComponent {
     this.fetch();
   }
 
-  trimStackTrace(stack) {
-    let stacks = stack.trim().split("\r\n");
-    const len = stacks.length
-    if(len > 5){
-      stacks = stacks.slice(0,5)
-    }
-
-    let result = stacks.join("\r\n")
-    if(len>5){
-      result = `${result}\r\n...`
-    }
-
-    result = result.split("\r\n").map((item, i) => {
-      return <span style={{display: 'block'}} key={i}>{item}</span>;
-    });
-    return result
-  }
 
   handleTableChange = (pagination, filters, sorter) => {
     const pager = { ...this.state.pagination };
@@ -83,7 +66,7 @@ class LeakInfoList extends PureComponent {
     console.log('params:', params);
     this.setState({ loading: true });
     reqwest({
-      url: 'http://10.113.21.105/api/getBlockInfoList',
+      url: 'http://10.113.21.105/api/getMatrixLeakInfoList',
       method: 'get',
       data: {
         results: 10,
@@ -115,4 +98,4 @@ class LeakInfoList extends PureComponent {
 
 }
 
-export default LeakInfoList;
+export default MatrixLeakInfoList;

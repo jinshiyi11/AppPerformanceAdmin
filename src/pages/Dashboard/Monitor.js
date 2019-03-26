@@ -29,10 +29,10 @@ const havePermissionAsync = new Promise(resolve => {
 }))
 class Monitor extends Component {
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch({
-      type: 'monitor/fetchTags',
-    });
+    // const { dispatch } = this.props;
+    // dispatch({
+    //   type: 'monitor/fetchTags',
+    // });
   }
 
   render() {

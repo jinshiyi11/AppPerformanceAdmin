@@ -43,10 +43,16 @@ export default [
         component: './Block/BlockDetailList'
       },
       {
-        path: '/leak/leakInfoList',
-        name: 'leak',
+        path: '/leak/matrixLeakInfoList',
+        name: 'matrixLeak',
         icon: 'dashboard',
-        component: './Leak/LeakInfoList',
+        component: './Leak/MatrixLeakInfoList',
+      },
+      {
+        path: '/leak/leakCanaryInfoList',
+        name: 'leakCanary',
+        icon: 'dashboard',
+        component: './Leak/LeakCanaryInfoList',
       },
       { path: '/', redirect: '/block/blockInfoList' },
       /*
