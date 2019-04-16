@@ -42,4 +42,5 @@ export default {
   'menu.block': '程序卡顿',
   'menu.matrixLeak': 'matrix内存泄漏',
   'menu.leakCanary': 'leakCanary内存泄漏',
+  'menu.ioLeak': 'io问题',
 };

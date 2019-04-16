@@ -6,7 +6,7 @@ import Const from '../Const';
 
 const PAGE_COUNT = 10;
 // var moment = require('moment');
-class LeakCanaryInfoList extends PureComponent {
+class IoLeakInfoList extends PureComponent {
   state = {
     data: [],
     pagination: {defaultPageSize: PAGE_COUNT},
@@ -21,8 +21,8 @@ class LeakCanaryInfoList extends PureComponent {
     render: text => <a href="javascript:;">{text}</a>,
   }, {
     title: 'leak信息',
-    dataIndex: 'info',
-    key: 'info',
+    dataIndex: 'stack',
+    key: 'stack',
     width: 300,
     render: (text, record) => {
       return (
@@ -82,7 +82,7 @@ class LeakCanaryInfoList extends PureComponent {
     console.log('params:', params);
     this.setState({ loading: true });
     reqwest({
-      url: `${Const.HOST}/api/getLeakCanaryInfoList`,
+      url: `${Const.HOST}/api/getIoLeakInfoList`,
       method: 'get',
       data: {
         results: 10,
@@ -114,4 +114,4 @@ class LeakCanaryInfoList extends PureComponent {
 
 }
 
-export default LeakCanaryInfoList;
+export default IoLeakInfoList;

@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Table } from 'antd';
 import reqwest from 'reqwest';
+import moment from 'moment/moment';
+import Const from '../Const';
 
 const PAGE_COUNT = 10;
 class MatrixLeakInfoList extends PureComponent {
@@ -37,7 +39,7 @@ class MatrixLeakInfoList extends PureComponent {
     key: 'time',
     render: (text, record) => {
       return (
-        <div>{new Date(text * 1).toLocaleString()}</div>
+        <div>{moment(text * 1).format('YYYY-MM-DD HH:mm:ss')}</div>
       )
     },
   }];
@@ -66,7 +68,7 @@ class MatrixLeakInfoList extends PureComponent {
     console.log('params:', params);
     this.setState({ loading: true });
     reqwest({
-      url: 'http://10.113.21.105/api/getMatrixLeakInfoList',
+      url: `${Const.HOST}/api/getMatrixLeakInfoList`,
       method: 'get',
       data: {
         results: 10,

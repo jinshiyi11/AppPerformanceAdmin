@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Table } from 'antd';
 import reqwest from 'reqwest';
+import Const from '../Const';
 
 const PAGE_COUNT = 10;
 class BlockDetailList extends PureComponent {
@@ -60,7 +61,7 @@ class BlockDetailList extends PureComponent {
     console.log('params:', params);
     this.setState({ loading: true });
     reqwest({
-      url: 'http://10.113.21.105/api/getBlockDetailList',
+      url: `${Const.HOST}/api/getBlockDetailList`,
       method: 'get',
       data: {
         results: 10,

@@ -22,12 +22,12 @@ export default [
     authority: ['admin', 'user'],
     routes: [
       // 数据概览
-      {
-        path: '/dashboard1',
-        name: 'overview',
-        icon: 'dashboard',
-        component: './Dashboard/Monitor',
-      },
+      // {
+      //   path: '/dashboard1',
+      //   name: 'overview',
+      //   icon: 'dashboard',
+      //   component: './Dashboard/Monitor',
+      // },
       //
       {
         path: '/block/blockInfoList',
@@ -53,6 +53,12 @@ export default [
         name: 'leakCanary',
         icon: 'dashboard',
         component: './Leak/LeakCanaryInfoList',
+      },
+      {
+        path: '/io/ioLeakInfoList',
+        name: 'ioLeak',
+        icon: 'dashboard',
+        component: './Io/IoLeakInfoList',
       },
       { path: '/', redirect: '/block/blockInfoList' },
       /*
