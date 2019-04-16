@@ -43,16 +43,16 @@ export default [
         component: './Block/BlockDetailList'
       },
       {
-        path: '/leak/matrixLeakInfoList',
-        name: 'matrixLeak',
-        icon: 'dashboard',
-        component: './Leak/MatrixLeakInfoList',
-      },
-      {
         path: '/leak/leakCanaryInfoList',
         name: 'leakCanary',
         icon: 'dashboard',
         component: './Leak/LeakCanaryInfoList',
+      },
+      {
+        path: '/leak/matrixLeakInfoList',
+        name: 'matrixLeak',
+        icon: 'dashboard',
+        component: './Leak/MatrixLeakInfoList',
       },
       {
         path: '/io/ioLeakInfoList',
@@ -61,6 +61,9 @@ export default [
         component: './Io/IoLeakInfoList',
       },
       { path: '/', redirect: '/block/blockInfoList' },
+      {
+        component: '404',
+      },
       /*
       {
         path: '/dashboard',

@@ -39,7 +39,7 @@ export default {
   'menu.account.trigger': '触发报错',
   'menu.account.logout': '退出登录',
   'menu.overview': '数据概览',
-  'menu.block': '程序卡顿',
+  'menu.block': 'blockCanary程序卡顿',
   'menu.matrixLeak': 'matrix内存泄漏',
   'menu.leakCanary': 'leakCanary内存泄漏',
   'menu.ioLeak': 'io问题',

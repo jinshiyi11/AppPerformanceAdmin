@@ -37,7 +37,7 @@ class BlockInfoList extends PureComponent {
     key: 'stackTrace',
     render: (text, record) => {
       return (
-      <a href={`/block/blockDetailList?id=${record.id}`}>{this.trimStackTrace(text)}</a>
+      <a href={`#/block/blockDetailList?id=${record.id}`}>{this.trimStackTrace(text)}</a>
     )
     },
   }];
